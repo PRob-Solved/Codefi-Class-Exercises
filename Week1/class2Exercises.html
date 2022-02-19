@@ -10,64 +10,61 @@
 
 </head>
 <body>
-    <script src="class2Basic.js"></script> 
+   
 
-    <div>
+    <div align="center">
         <h1>Class 2 Exercises</h1>
         <h4>Developer: Paul Roberts</h4>
         <h5><a href="https://github.com/mycommonplaces/Codefi-Class-Exercises">GitHub: mycommonplaces/Codefi-Class-Exercises</a></h5>
+        <p>The files for these exercises are:<br/>class2Exercises.html<br/> class2Basic.js<br/> class2Intermediate.js<br/>class2Advanced.js</p>
     </div>
  
+
+    <!-- Exercise 1: Basic -->
     <div class="jumbotron">
         <h2>Exercise 1: Basic</h2>
-       
         <p>Aim: Create a variable for every JavaScript Data Type. These variables are contained in class2Basic.js</p>
+        <script src="class2Basic.js"></script> 
         <hr/>
-       
         <p> Contents:</p>
-
         <pre><code>
-            const string = "string"; // variable that holds a string value
-            const number = 7;        // variable that holds a number
-            const boolean = 7 > 1;   // variable that holds a boolean
-            const nul = null;        // variable that holds a null value
-            let notdefined;          // variable that holds an undefined value
-            const something = {      // variable that holds an object   
+            const string = "string";    // variable that holds a string value
+            const number = 7;           // variable that holds a number
+            const boolean = 7 > 1;      // variable that holds a boolean
+            const nul = null;           // variable that holds a null value
+            let notdefined;             // variable that holds an undefined value
+            const something = {         // variable that holds an object   
                 name: "Paul", eats: "okra"
                 };
             const somethingElse = [7, 34, 35]; // variable that holds an array
         </code></pre>
     </div>
 
+
+    <!-- Exercise 2: Intermediate -->
     <div class="jumbotron">
-        <h2>Exercise 2: Intermediate</h2>
-        
+        <h2>Exercise 2: Intermediate</h2>  
         <p>Aim: Dynamically display a list of food items and prices using HTML & JavaScript. This script is contained in Class2Intermediate.js</p>
         <hr/>
-        
         <ul class="food-list">
         </ul>
         <script src="class2Intermediate.js"></script>
-
     </div>
 
+    <!-- Exercise 3: Advanced -->
     <div class="jumbotron">
         <h2>Exercise 3: Advanced</h2>
         <p>Aim: Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num until the array length reaches length. This javascript is contained in class2Advanced.js</p>
         <hr/>
-
         <form>
             <label for="firstNumber">First Number:</label>
             <input type="number" id="numberInput"></input><br/>
             <label for="arrayLength">Array Length:</label>
-            <input type="number" id="arrayLength"></input>
+            <input type="number" id="arrayLength"></input><br/>
         </form>
-
         <script src="class2Advanced.js"></script>
         <button class="btn btn-success" onclick="arrayOfMultiples(numberInput, arrayLength);">GO!</button>
-
-        <p id="publishedArray"></p>
-
+        <h3 id="publishedArray"></h3>
         </div>
 
 </body>
