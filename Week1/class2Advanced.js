@@ -1,14 +1,13 @@
 const numberInput = document.getElementById("numberInput").value;
 const arrayLength = document.getElementById("arrayLength").value;
 const publishedArray = document.getElementById("publishedArray");
-let numberArray = [];
+let numberArray =[ ];
 
-function arrayofMultiples(numberInput, arrayLength) {
-    while (i <= arrayLength) {
-        const numberMultiplied = i * numberInput;
-        numberArray.push(numberMultiplied);
-        i++;
-    }
-}
+function arrayOfMultiples(numberInput, arrayLength) {
+    for (let i = 0; i < arrayLength; i++) {
+            let numberMultiplied = i * numberInput;
+            numberArray.push(numberMultiplied);
+        }
+  }
 
-publishedArrary.innerText = numberArray
+  document.getElementById("publishedArray").innerHTML = console.log(numberArray);
