@@ -12,6 +12,6 @@ function arrayOfMultiples(numberInput, arrayLength) {
     }
   
 // arrayOfMultiples(7, 5);
-arrayOfMultiples(7,4);
-//   document.getElementById("publishedArray").innerHTML = console.log(numberArray);
+arrayOfMultiples(numberInput, arrayLength);
+
 console.log(numberArray);

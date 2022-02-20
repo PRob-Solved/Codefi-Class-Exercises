@@ -54,7 +54,7 @@
     <!-- Exercise 3: Advanced -->
     <div class="jumbotron">
         <h2>Exercise 3: Advanced</h2>
-        <p>Aim: Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num until the array length reaches length. This javascript is contained in class2Advanced.js</p>
+        <p>Aim: Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num until the array length reaches length. This javascript is contained in class2Advanced.js and the results can be seen in the console.</p>
         <hr/>
 
         <form>
@@ -67,7 +67,8 @@
             <input type="number" id="arrayLength"></input>
         </form>
 
-        <button class="btn btn-success" onclick="arrayOfMultiples(numberInput, arrayLength)" value="add number">GO!</button>
+        <!-- <button class="btn btn-success" onclick="arrayOfMultiples(numberInput, arrayLength)" value="add number">GO!</button> -->
+        <button class="btn btn-success" onclick="arrayOfMultiples(document.getElementById('numberInput').value, document.getElementById('arrayLength').value)">Engage!</button>
 
         <p id="publishedArray"></p>
      </div>
