@@ -1,6 +1,6 @@
 const numberInput = document.getElementById("numberInput").value;
 const arrayLength = document.getElementById("arrayLength").value;
-const publishedArray = document.getElementById("publishedArray");
+// const publishedArray = document.getElementById("publishedArray");
 let numberArray =[ ];
 
 function arrayOfMultiples(numberInput, arrayLength) {
@@ -10,8 +10,14 @@ function arrayOfMultiples(numberInput, arrayLength) {
         }
     console.log(numberArray);
     }
+
   
 // arrayOfMultiples(7, 5);
 arrayOfMultiples(numberInput, arrayLength);
 
 console.log(numberArray);
+
+function displayArray() {
+    alert("The number array is: " + numberArray);
+}
+
