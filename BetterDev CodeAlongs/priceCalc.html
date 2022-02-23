@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Per Square Foot Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+       .text-giant {
+          font-size: 40px;
+        }
+      </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1></h1>
+        <H2>Home Price Per Square Foot</H2>
+        <form>
+
+            <div class="form-group">
+                <label for="homePrice">Home Price</label>
+                <input type="text" class="form-control" name="homePrice" value="325000">
+            </div>
+
+            <div class="form-group">
+                <label for="sqfootage">Total Square Feet:</label>  
+                <span class="label label-primary sqfootage-label">2000</span>
+                <input type="range" class="form-control" name="squareFeet" value="2000" min="500" max="10000" step="100"></input>
+            
+            </div>              
+
+        </form>
+
+        <div class="text-right text-giant total"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const priceInput = document.querySelector('[name=homePrice]');
+        const sqftInput = document.querySelector('[name=squareFeet]');
+        const total = document.querySelector('.total');
+        const quantityLabel = document.querySelector('.sqfootage-label');
+
+        function calculatePpsqft() {
+            const price = priceInput.value;
+            const sqFt = sqftInput.value;
+            const ppsqft = price / sqFt;
+            console.log(ppsqft);
+            total.innerText = '$' + ppsqft.toFixed(2);
+        };
+
+        function updateSqFtLabel() {
+            const sqFt = sqftInput.value;
+            quantityLabel.innerText = sqFt;
+        };
+
+        calculatePpsqft();
+
+        priceInput.addEventListener('input', calculatePpsqft);
+        sqftInput.addEventListener('input', calculatePpsqft);
+        sqftInput.addEventListener('input', updateSqFtLabel);
+
+
+    </script>
+</body>
+</html>
