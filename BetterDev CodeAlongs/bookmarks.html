@@ -1,0 +1,345 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+  <head>
+    <title>Paul's Commonplaces</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,300&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-image: url("beans.jpeg");
+        background-size: cover;
+      }
+
+      header h1 {
+        font-family: "Shadows Into Light", cursive;
+        font-size: 8vw;
+        text-align: center;
+        color: rgba(220, 54, 54, 0.8);
+        margin: auto;
+      }
+
+      .floater,
+      .floater-bookmks {
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .floater {
+        width: 6000px !important;
+        font-size: 19px;
+        line-height: 1.5;
+        border-radius: 5px;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+      }
+
+      .floater input[type="text"] {
+        position: relative;
+        padding: 30px 20px;
+        border: none;
+        box-shadow: none;
+        font-size: 14px;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+      }
+
+      .floater-bottom {
+        padding: 6px 10px 8px;
+        text-align: right;
+        border-top: 1px solid #ddd;
+      }
+
+      .floater-bottom button {
+        padding: 4px 8px;
+        font-size: 12px;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.7);
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 0.3s ease opacity;
+      }
+
+      body.show-floater .floater {
+        transition: scale(1.2);
+      }
+
+      body.show-floater .floater input[type="text"] {
+        padding: 5px 10px;
+        font-size: 40px;
+        font-family: "Montserrat Alternates", sans-serif;
+      }
+
+      body.show-floater .overlay {
+        opacity: 1;
+      }
+
+      input {
+        width: 100%;
+        font-family: "Montserrat Alternates", sans-serif;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      .content,
+      .bookmks {
+        position: relative;
+        border-radius: 5px;
+        max-width: 500px;
+        margin: 10px auto;
+      }
+
+      .floater-bookmks {
+        line-height: 1.2;
+        border-radius: 5px;
+        margin: 10px auto;
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        font-family: Lato, "Supermercado One";
+        font-size: 20px;
+      }
+
+      .floater-bookmks .deleteBtn {
+        padding: 2px 7px;
+        font-size: 12px;
+        float: right;
+      }
+
+      .footer {
+        font-family: "Sirin Stencil";
+        font-style: italic;
+        font-size: 12px;
+        color: #ddd;
+        border: 1px solid #ddd;
+        margin: 0 auto;
+        max-width: 525px;
+        border-radius: 0px 0px 10px 10px;
+        background-color: #000;
+        background: rgba(0, 0, 0, 0.6);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="overlay"></div>
+
+    <div class="container-fluid">
+      <header class="text-center">
+        <h1>Commonplacebook</h1>
+      </header>
+
+      <!-- input for new Bookmarks -->
+      <div class="floater">
+        <form class="bookmark-form" onsubmit="return false">
+          <div class="floater-top">
+            <input type="text" class="floater-control" placeholder="Add new" />
+          </div>
+          <div class="floater-bottom">
+            <button type="submit" class="btn btn-success">Add</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="footer text text-center"></div>
+
+      <!-- List of bookmarks, pupolated by script -->
+      <div class="bookmks"></div>
+    </div>
+
+    <script>
+      var bookmarks = {
+        bList: [],
+        addBs: function () {
+          // adds new bookmarks
+          var bookmarkElement = document.querySelector(".floater-control");
+
+          bookmarks.bList.push(bookmarkElement.value);
+          viewBookmarks.displayBs();
+        },
+        deleteBs: function (position) {
+          // deletes bookmark from bList array
+          bookmarks.bList.splice(position, 1);
+          viewBookmarks.displayBs();
+        },
+      };
+
+      var viewBookmarks = {
+        displayBs: function () {
+          var index = 0;
+
+          const bookmarkDivs = document.querySelector(".bookmks");
+          const inputElem = document.querySelector(".floater-control");
+          bookmarkDivs.textContent = "";
+          inputElem.value = "";
+
+          for (var elems of bookmarks.bList) {
+            var newFloater = document.createElement("div");
+            var newLink = document.createElement("a");
+
+            newFloater.className = "floater-bookmks ";
+            newFloater.id = index;
+
+            newLink.textContent = useful.truncateString(elems, 400);
+
+            if (newLink.textContent.startsWith("http")) {
+              newLink.className = "link";
+              newLink.setAttribute("href", useful.textCheckAdd(elems, "http"));
+              newLink.target = "_target";
+            } else if (newLink.textContent.startsWith("www")) {
+              newLink.className = "link";
+              newLink.setAttribute("href", useful.textCheckAdd(elems, "http"));
+              newLink.target = "_target";
+            } else if (newLink.textContent.endsWith("com")) {
+              newLink.className = "link";
+              newLink.setAttribute("href", useful.textCheckAdd(elems, "http"));
+              newLink.target = "_target";
+            } else if (newLink.textContent.endsWith("org")) {
+              newLink.className = "link";
+              newLink.setAttribute("href", useful.textCheckAdd(elems, "http"));
+              newLink.target = "_target";
+            } else if (newLink.textContent === "") {
+              alert("Enter something!");
+              return;
+            } else {
+              newLink.textContent;
+            }
+
+            newFloater.appendChild(newLink);
+            newFloater.appendChild(this.createDeleteButton());
+            bookmarkDivs.appendChild(newFloater);
+
+            index++;
+          }
+
+          storeLocally.keepValues("bookmarks");
+        },
+        showFloater: function () {
+          document.body.className = "show-floater";
+        },
+        hideFloater: function () {
+          document.body.className = "";
+        },
+        createDeleteButton: function () {
+          // creates delete button for bookmark
+          var deleteButton = document.createElement("button");
+          deleteButton.textContent = "Remove";
+          deleteButton.className = "btn btn-warning deleteBtn pull-right";
+          return deleteButton;
+        },
+      };
+
+      var listenEvents = {
+        listeners: function () {
+          // event listeners
+
+          const floaterElems = document.querySelector(".floater");
+
+          // Listener for: show/hides top floater
+          floaterElems.addEventListener(
+            "mouseenter",
+            viewBookmarks.showFloater
+          );
+          floaterElems.addEventListener(
+            "mouseleave",
+            viewBookmarks.hideFloater
+          );
+
+          // Listener for: adding bookmarks
+          const formElement = document.querySelector(".bookmark-form");
+          formElement.addEventListener("submit", bookmarks.addBs);
+
+          // get bookmarkDivs
+          const bookmarkDivs = document.querySelector(".bookmks");
+          bookmarkDivs.addEventListener("click", function (event) {
+            // get element that was clicked on as an event
+            var elementClicked = event.target;
+            // check if element clicked was delete button
+            if (elementClicked.classList.contains("deleteBtn")) {
+              bookmarks.deleteBs(parseInt(elementClicked.parentNode.id));
+            }
+          });
+        },
+      };
+
+      var storeLocally = {
+        testLocalStorage: function () {
+          if (typeof Storage === "undefined") {
+            alert("Sorry! No Web Storage support");
+            return;
+          }
+        },
+        keepValues: function (arrToRetrieve) {
+          this.testLocalStorage();
+          localStorage.setItem(arrToRetrieve, JSON.stringify(bookmarks.bList));
+        },
+        retrieveValues: function (arrToRetrieve) {
+          this.testLocalStorage();
+          if (localStorage.getItem(arrToRetrieve)) {
+            bookmarks.bList = JSON.parse(localStorage.getItem(arrToRetrieve));
+          } else {
+            bookmarks.bList = [];
+          }
+        },
+      };
+
+      var useful = {
+        truncateString: function (str, num) {
+          // Clear out that junk in your trunk
+
+          if (str.length <= num) {
+            return str;
+          } else if (num <= 3) {
+            str = str.slice(0, num) + "...";
+          } else {
+            str = str.slice(0, num - 3) + "...";
+          }
+
+          return str;
+        },
+        textCheckAdd: function (str, strToCheck) {
+          // var expression1 = /(http|\/\/)/i;
+          var expression1 = new RegExp(strToCheck, "i");
+          if (!str.match(expression1)) {
+            return (str = strToCheck + "://" + str);
+          } else {
+            return str;
+          }
+        },
+        textCheckRemove: function (str, strToCheck) {
+          // var expression1 = /(http|\/\/)/i;
+          var expression1 = new RegExp(strToCheck, "i");
+          return str.replace(expression1, "");
+        },
+        regexEscape: function (str) {
+          // function to escape special characters when not done properly
+          return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+        },
+      };
+
+      listenEvents.listeners();
+      storeLocally.retrieveValues("bookmarks");
+      viewBookmarks.displayBs();
+    </script>
+  </body>
+</html>
