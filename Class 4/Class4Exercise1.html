@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+
+    <title>Class 4 Exercises</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Exercise 1: Basic</h2>
+        <p>
+          Create a button that changes the background and text color randomly
+          when clicked
+        </p>
+        <button class="btn btn-primary btn-large button" class="btn-primary">
+          Update!
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const button = document.querySelector(".button");
+      button.addEventListener("click", updateColors);
+
+      function updateColors() {
+        document.body.style.backgroundColor =
+          "#" + Math.floor(Math.random() * 1000000);
+        document.body.style.color = "#" + Math.floor(Math.random() * 1000000);
+      }
+
+      button.Add;
+    </script>
+  </body>
+</html>
