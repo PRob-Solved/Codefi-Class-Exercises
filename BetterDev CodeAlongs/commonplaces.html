@@ -18,7 +18,7 @@
       }
 
       body {
-        background-image: url("wall.jpeg");
+        background-image: url("beans.jpeg");
         background-size: cover;
       }
 
@@ -196,7 +196,7 @@
       const bookmarkForm = document.querySelector(".bookmark-form");
       const bookmarkInput = bookmarkForm.querySelector("input[type=text]");
       const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-      const apiUrl = "https://opengraph.io/api/1.0/site";
+      const apiUrl = "https://opengraph.io/api/1.1/site";
       const appId = "d91afdd1-9f10-4ca2-94ae-555bc6bdc403";
 
       fillBookmarksList(bookmarks);
