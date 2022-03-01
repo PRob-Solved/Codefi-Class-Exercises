@@ -47,20 +47,10 @@
       <div class="form-group">
         <form>
           <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Your name ..."
-            value="Bruce Wayne"
-          />
+          <input type="text" id="name" placeholder="Your name ..." />
 
           <label for="uperhero">Superhero</label>
-          <input
-            type="text"
-            id="superhero"
-            placeholder="Your Superhero ..."
-            value="Batman"
-          />
+          <input type="text" id="superhero" placeholder="Your Superhero ..." />
 
           <button
             class="btn btn-primary"
@@ -77,26 +67,33 @@
     </div>
 
     <script>
+      // Set Variables from document
       let name = document.querySelector("#name").value;
       let superhero = document.querySelector("#superhero").value;
       const printList = document.querySelector(".printSuperheroes");
-      const ident = {
-        name: document.querySelector("#name").value,
-        superhero: document.querySelector("#superhero").value,
-      };
-      let heroesList = [];
+      const submitBtn = document.querySelector("#submitBtn");
 
+      // define the object that holds the key:value pairs from the form
+
+      // add the object to the array of superheroes
       function addSuperhero() {
         event.preventDefault();
+        let heroesList = [];
+
+        const ident = {
+          name: document.querySelector("#name").value,
+          superhero: document.querySelector("#superhero").value,
+        };
         heroesList.push(ident);
         printList.innerHTML = ` <div class="mt-4 p-5 bg-success text-white rounded">
-      <h4>${name} is ${superhero}!</h4>`;
+      <h4>${heroesList[0].name} is ${heroesList[0].superhero}!</h4>`;
       }
 
-      const submitBtn = document.querySelector("#submitBtn");
+      // add event listener to execute the function
+
       submitBtn.addEventListener("click", addSuperhero);
 
-      console.log(heroesList);
+      // store the array in local storage
     </script>
   </body>
 </html>
