@@ -25,7 +25,6 @@
 
       .printSuperheroes {
         display: flex;
-        margin: auto;
       }
       .printList {
           font-size: 25px;
@@ -51,8 +50,7 @@
                 class="form-control"
                 placeholder="Name"
                 aria-label="name"
-                id="name"
-              />
+                id="name"/>                
             </div>
             <div class="col">
               <input
@@ -61,21 +59,22 @@
                 placeholder="Superhero"
                 aria-label="superhero"
                 id="superhero"
+                 
               />
             </div>
             <div class="col">
               <button
-                class="btn btn-primary"
                 type="submit"
+                class="btn btn-primary"
                 id="submitBtn"
               >
-                Submit
+                Display
               </button>
-                <button
+              <button
                 class="btn btn-primary"
                 id="resetBtn"
               >
-                Reset Form
+                Reset 
               </button>
             </div>
           </div>
@@ -96,30 +95,53 @@
       let heroesList = JSON.parse(localStorage.getItem("heroesList")) || [];
 
       // add the form object to the array of superheroes
-      function addSuperhero(event) {
-        
+      function addSuperhero(event) {       
         event.preventDefault();
+        
+        // add to the array
         const ident = {
           name: document.querySelector("#name").value,
           superhero: document.querySelector("#superhero").value,
         };
-
         heroesList.push(ident);
+        
+        // Send array to localStorage
         localStorage.setItem("heroesList", JSON.stringify(heroesList));
 
+        // Begin loop for iteration
         for (let i=0; i<heroesList.length; i++) {
-          hero = heroesList[i];
+          let hero = heroesList[i];
+        
+          // remove empty objects from the array
+          if (heroesList[i].name === "") {
+            heroesList.splice(i, 1)
+          };
+          
+          // prevent from printing arrays at each display
           if (!printList.innerHTML.includes(hero.name)) {
-          printList.innerHTML += '<div class="mt-4 p-5 bg-success text-white rounded"><br/>' + hero.name + ' is ' + hero.superhero + '!';
-        } else {document.getElementById("form").reset()}}
-
+            printList.innerHTML += '<div class="mt-4 p-5 bg-success text-white rounded"><br/>' + hero.name + ' is ' + hero.superhero + '!';
+          }  else {
+            document.getElementById("form").reset()
+          };
+        }
       }
       
       function resetForm() {
+        // remove empty objects from array
+        for (i=0; i<heroesList.length; i++) {
+          if (heroesList[i].name === "") {
+            heroesList.splice(i, 1);
+          };  
+        };
+        
+        // send array to localStorage
+        localStorage.setItem("heroesList", JSON.stringify(heroesList));
+        
+        // reset form
         document.getElementById("form").reset();
       }
-      
-      // add event listener to execute the function
+
+      // add event listeners
       submitBtn.addEventListener("click", addSuperhero);
       resetBtn.addEventListener("click", resetForm);
     </script>
