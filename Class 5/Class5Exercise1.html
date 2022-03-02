@@ -23,8 +23,12 @@
         margin: auto;
       }
 
+      .printSuperheroes {
+        display: flex;
+        margin: auto;
+      }
       .printList {
-        margin = 30px;
+          font-size: 25px;
       }
     </style>
   </head>
@@ -64,14 +68,12 @@
                 class="btn btn-primary"
                 type="submit"
                 id="submitBtn"
-                onclick="addSuperhero()"
               >
                 Submit
               </button>
-                            <button
+                <button
                 class="btn btn-primary"
                 id="resetBtn"
-                onclick="resetForm()"
               >
                 Reset Form
               </button>
@@ -94,20 +96,25 @@
       let heroesList = JSON.parse(localStorage.getItem("heroesList")) || [];
 
       // add the form object to the array of superheroes
-      function addSuperhero() {
+      function addSuperhero(event) {
+        
         event.preventDefault();
         const ident = {
           name: document.querySelector("#name").value,
           superhero: document.querySelector("#superhero").value,
         };
+
         heroesList.push(ident);
         localStorage.setItem("heroesList", JSON.stringify(heroesList));
+
         for (let i=0; i<heroesList.length; i++) {
-        // printSuperheroes.innerHTML =  "<div class='mt-4 p-5 bg-success text-white rounded'>";
-        hero = heroesList[i];
-        printList.innerHTML += '<div class="mt-4 p-5 bg-success text-white rounded"><br/>' + hero.name + ' is ' + hero.superhero + '!<br/>';
-        }
+          hero = heroesList[i];
+          if (!printList.innerHTML.includes(hero.name)) {
+          printList.innerHTML += '<div class="mt-4 p-5 bg-success text-white rounded"><br/>' + hero.name + ' is ' + hero.superhero + '!';
+        } else {document.getElementById("form").reset()}}
+
       }
+      
       function resetForm() {
         document.getElementById("form").reset();
       }
