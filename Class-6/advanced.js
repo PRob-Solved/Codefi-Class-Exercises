@@ -18,10 +18,10 @@
 // // 1 * 2 + 0 * 3 + 3 * 0
 // ```
 
-function makeSum([num1, num2], [num3, num4], [num5, num6]) {
-  let group1 = num1 * num2;
-  let group2 = num3 * num4;
-  let group3 = num5 * num6;
+function makeSum([[num1, num2], [num3, num4], [num5, num6]]) {
+  let group1 = [0][0] * [0][1];
+  let group2 = [1][0] * [1][1];
+  let group3 = [2][0] * [2][1];
   let sum = group1 + group2 + group3;
   console.log(sum);
   return sum;
