@@ -18,14 +18,12 @@
 // // 1 * 2 + 0 * 3 + 3 * 0
 // ```
 
-function productSum(array1, array2, array3) {
-  let group1 = array1[0][0] * array1[0][1];
-}
+function productSum([[,], [,], [,]]) {
+  let group1 = [0][0] * [0][1];
+  let group2 = [1][0] * [1][1];
+  let group3 = [2][0] * [2][1];
+  let groupTotal = group1 + group2 + group3;
+  console.log(group1);
 
-// function productSum([[num1, num2], [num3, num4], [num5, num6]]) {
-//   let group1 = [[0][0] * [0][1]];
-//   let group2 = [[0][1] * [1][1]];
-//   let group3 = [[2][0] * [2][1]];
-//   let sum = group1 + group2 + group3;
-//   return sum;
-// }
+  return groupTotal;
+}
