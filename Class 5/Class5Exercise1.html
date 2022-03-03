@@ -11,10 +11,21 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap" rel="stylesheet">
 
     <title>Class 5, Exercise 1</title>
 
     <style>
+      img {
+        transition-duration: 250ms;
+      }
+
+      img:hover {
+        transform: scale(1.2);
+      }
+
       body .form-group {
         margin-top: 10px;
       }
@@ -22,13 +33,18 @@
       .btn {
         margin: auto;
       }
-
+      
       .printSuperheroes {
         display: flex;
       }
+
       .printList {
-          font-size: 30px;
+          font-size: 30px;  
       }
+
+    
+
+
     </style>
   </head>
   <body>
@@ -48,14 +64,6 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Name"
-                aria-label="name"
-                id="name"/>                
-            </div>
-            <div class="col">
-              <input
-                type="text"
-                class="form-control"
                 placeholder="Superhero"
                 aria-label="superhero"
                 id="superhero"
@@ -63,18 +71,33 @@
               />
             </div>
             <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Suspected Real Identity"
+                aria-label="name"
+                id="name"/>                
+            </div>
+            
+            <div class="col">
               <button
                 type="submit"
-                class="btn btn-primary"
+                class="btn btn-success"
                 id="submitBtn"
               >
                 Display
               </button>
               <button
-                class="btn btn-primary"
+                class="btn btn-warning"
                 id="resetBtn"
               >
                 Hide 
+              </button>
+              <button
+                class="btn btn-danger"
+                id="eraseBtn"
+              >
+                Destroy all Data! 
               </button>
             </div>
           </div>
@@ -104,7 +127,7 @@
           superhero: document.querySelector("#superhero").value,
         };
         heroesList.push(ident);
-        
+
         // Send array to localStorage
         localStorage.setItem("heroesList", JSON.stringify(heroesList));
 
@@ -119,7 +142,7 @@
           
           // prevent from printing arrays at each display
           if (!printList.innerHTML.includes(hero.name)) {
-            printList.innerHTML += '<div class="mt-4 p-5 bg-success text-white rounded"><img src="pow.png" width="150px">' + hero.name + ' is ' + hero.superhero + '!';
+            printList.innerHTML += '<div class="mt-4 p-5 bg-success text-white rounded "><img src="pow.png" width="150px">' + hero.name + ' is ' + hero.superhero + '!';
           }  else {
             document.getElementById("form").reset()
           };
@@ -141,9 +164,16 @@
         document.getElementById("form").reset();
       }
 
+
+      function eraseData() {
+        heroesList = [];
+        localStorage.setItem("heroesList", JSON.stringify(heroesList));
+      }
+      
       // add event listeners
       submitBtn.addEventListener("click", addSuperhero);
       resetBtn.addEventListener("click", resetForm);
+      eraseBtn.addEventListener("click", eraseData);
     </script>
   </body>
 </html>
