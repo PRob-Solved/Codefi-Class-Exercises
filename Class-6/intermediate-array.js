@@ -1,3 +1,7 @@
+// Aim: Write a function that returns an array containing all the numbers
+// inclusive to that range given the start and end values. This function is
+// contained in intermediate-array.js
+
 function makeArray(start, end) {
   let myArray = [];
   if (start > end) {

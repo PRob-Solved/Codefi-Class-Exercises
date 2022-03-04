@@ -11,13 +11,39 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+
+    <style>
+      body {
+        background: gainsboro;
+      }
+
+      .inspect {
+        margin: 45px auto;
+        transition-duration: 300ms;
+      }
+
+      .inspect:hover {
+        transform: scale(1.2);
+        background: white;
+      }
+    </style>
+
     <script src="basic-triangle.js"></script>
     <script src="intermediate-array.js"></script>
     <script src="advanced.js"></script>
   </head>
   <body>
+    <div class="container">
+      <h2>Class 6 Exercises</h2>
+      <h4>Developer: Paul Roberts</h4>
+      <h5>
+        <a href="https://github.com/mycommonplaces/Codefi-Class-Exercises"
+          >GitHub > mycommonplaces > Codefi-Class-Exercises</a
+        >
+      </h5>
+    </div>
     <div class="mt-4 p-5 bg-primary text-white rounded">
-      <h2>Exercise 1</h2>
+      <h2>Exercise 1: Basic</h2>
       <p>
         Aim: Create a function that calculates the area of a triangle given the
         base and height as arguments. Call the function a few times with
@@ -25,22 +51,71 @@
       </p>
     </div>
 
+    <div class="container inspect">
+      <img src="point-right.png" width="100px" style="float: left" />
+      <pre>
+        <code>function triangleArea(b, h) {
+          let area = 0.5 * (b * h);
+          console.log(area);
+          }
+        </code>
+      </pre>
+    </div>
+
     <div class="mt-4 p-5 bg-primary text-white rounded">
-      <h2>Exercise 2</h2>
+      <h2>Exercise 2: Intermediate</h2>
       <p>
         Aim: Write a function that returns an array containing all the numbers
         inclusive to that range given the start and end values. This function is
         contained in intermediate-array.js
       </p>
     </div>
+    <div class="container inspect">
+      <img src="point-right.png" width="100px" style="float: left" />
+      <pre>
+        <code>function makeArray(start, end) {
+          let myArray = [];
+          if (start > end) {
+            let newArray = [];
+            let newStart = end;
+            let newEnd = start;
+            for (let i = newStart; i <= newEnd; i++) {
+              newArray.push(i);
+            }
+            myArray = newArray.reverse();
+          } else {
+            for (let i = start; i <= end; i++) {
+              myArray.push(i);
+              }
+            }
+            console.log(myArray);
+          }
+        </code>
+      </pre>
+    </div>
 
     <div class="mt-4 p-5 bg-primary text-white rounded">
-      <h2>Exercise 3</h2>
+      <h2>Exercise 3: Advanced</h2>
       <p>
         Aim: Create a function that takes three collections of arguments and
         returns the sum of the product of the grouped numbers. This function is
         contained in advanced.js
       </p>
+    </div>
+
+    <div class="container inspect">
+      <img src="point-right.png" width="100px" style="float: left" />
+
+      <pre>
+        <code>function productSum(array) {
+          let group1 = array[0][0] * array[0][1];
+          let group2 = array[1][0] * array[1][1];
+          let group3 = array[2][0] * array[2][1];
+          let groupTotal = group1 + group2 + group3;
+          console.log(groupTotal);
+          return groupTotal;
+        </code>
+      </pre>
     </div>
     <script>
       triangleArea(4, 10);
