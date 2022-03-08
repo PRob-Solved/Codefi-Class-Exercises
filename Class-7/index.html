@@ -10,56 +10,108 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <script src="basic.js"></script>
-    <script src="intermediate.js"></script>
-    <script src="intermediate-2.js"></script>
-    <script src="intermediate-3.js"></script>
-    <script src="advanced.js"></script>
+    <script src="exercise1.js"></script>
+    <script src="exercise2.js"></script>
+    <script src="exercise3.js"></script>
+    <script src="exercise4.js"></script>
+    <script src="exercise5.js"></script>
     <title>Class 7 Exercises</title>
+
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
+      }
+    </style>
   </head>
   <body>
-    <div class="mt-4 p-5 bg-primary text-white rounded">
-      <h2>Exercise 1: Basic</h2>
-      <p>
-        Aim: Write a function `redundantReturn` that takes in a string `str` and
-        returns a function that returns str. This script is in basic.js and
-        prints to the console.
-      </p>
-    </div>
+    <div class="container">
+      <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h2>Exercise 1: Basic</h2>
+        <p>
+          Aim: Write a function `redundantReturn` that takes in a string `str`
+          and returns a function that returns str.
+        </p>
+        <hr />
+        <pre><code>function redundantReturn(str) {
+  function returnStr() {
+    return str;
+  }
+  console.log(str);
+}
 
-    <div class="mt-4 p-5 bg-primary text-white rounded">
-      <h2>Exercise 2: Intermediate-1</h2>
-      <p>
-        Aim: Fix the code to print out the string message. This script is
-        contained in intermediate.js and prints to the console.
-      </p>
-    </div>
+redundantReturn("str");</code></pre>
+      </div>
 
-    <div class="mt-4 p-5 bg-primary text-white rounded">
-      <h2>Exercise 3: Intermediate-2</h2>
-      <p>
-        Aim: Create a function with the drinks array as an argument and return
-        the drinks objects sorted by price in ascending order. Printed to the
-        console.
-      </p>
-    </div>
+      <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h2>Exercise 2: Intermediate</h2>
+        <p>Aim: Fix the code to print out the string message.</p>
+        <hr />
+        <pre><code>function greeting(message) {
+  return function (name) {
+    return message + " " + name;
+  };
+}
 
-    <div class="mt-4 p-5 bg-primary text-white rounded">
-      <h2>Exercise 4: Intermediate-3</h2>
-      <p>
-        Aim: Create the function that takes an array with objects and returns
-        the sum of people's budgets. See intermediate-3.js and, again, check the
-        console.
-      </p>
-    </div>
+let sayHello = greeting("Hello");
+console.log(sayHello("John"));</code></pre>
+      </div>
 
-    <div class="mt-4 p-5 bg-primary text-white rounded">
-      <h2>Exercise 5: Advanced</h2>
-      <p>
-        Aim: Write a function that converts an object into an array, where each
-        element represents a key-value pair in the form of an array. See
-        advanced.js and check the console for this output.
-      </p>
+      <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h2>Exercise 3: Intermediate</h2>
+        <p>
+          Aim: Create a function with the drinks array as an argument and return
+          the drinks objects sorted by price in ascending order.
+        </p>
+        <hr />
+        <pre><code>const drinks = [
+  { name: "lemonade", price: 50 },
+  { name: "lime", price: 10 },
+];
+
+function priceSort(drinksArray) {
+  drinksArray.sort((a, b) => a.price - b.price);
+}
+
+priceSort(drinks);
+console.log(drinks);</code></pre>
+      </div>
+
+      <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h2>Exercise 4: Intermediate</h2>
+        <p>
+          Aim: Create the function that takes an array with objects and returns
+          the sum of people's budgets.
+        </p>
+        <hr />
+        <pre><code>const myArray = [
+  { name: "John", age: 21, budget: 23000 },
+  { name: "Steve", age: 32, budget: 40000 },
+  { name: "Martin", age: 16, budget: 2700 },
+];
+
+const sum = myArray.map((element) => element.budget).reduce((a, b) => a + b, 0);
+console.log(sum);</code></pre>
+      </div>
+
+      <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h2>Exercise 5: Advanced</h2>
+        <p>
+          Aim: Write a function that converts an object into an array, where
+          each element represents a key-value pair in the form of an array.
+        </p>
+        <hr />
+        <pre><code>function toArray(pairs) {
+  const myArray = Object.entries(pairs);
+  console.log(myArray);
+}
+
+toArray({ shrimp: 15, tots: 12 });</code></pre>
+      </div>
     </div>
   </body>
 </html>
