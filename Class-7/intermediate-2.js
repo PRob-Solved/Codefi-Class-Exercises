@@ -16,6 +16,14 @@
 // ```js
 // sortDrinkByPrice(drinks)    ➞    [{name: "lime", price: 10}, {name: "lemonade", price: 50}]
 
+const drinks = [
+  { name: "lime", price: 10 },
+  { name: "lemonade", price: 50 },
+];
+
 function priceSort(drinksArray) {
   drinksArray.sort((a, b) => a.price - b.price);
 }
+
+priceSort(drinks);
+console.log(drinks);
