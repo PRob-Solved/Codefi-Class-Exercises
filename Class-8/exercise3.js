@@ -12,9 +12,13 @@ function interview(array, total) {
     // array.reduce((a, b) => a + b, 0) < 120
     total <= 120
   ) {
-    return console.log("qualified");
+    let result = "qualified";
+    console.log(result);
+    return result;
   } else {
-    return console.log("disqualified");
+    let result = "disqualified";
+    console.log(result);
+    return result;
   }
 }
 
