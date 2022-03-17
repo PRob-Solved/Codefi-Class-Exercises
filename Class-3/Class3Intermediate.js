@@ -1,11 +1,9 @@
-let users = [
-
-    {   name: "Peter",
+var users = [
+    { name: "Peter",
         age: 38,
         occupation: "friendly neighborhood SpiderMan"
     }
 ];
-
 function listUsers(user) {
-    console.log(`User: ${users[0].name}, age: ${users[0].age}, occupation: ${users[0].occupation}`);
+    console.log("User: ".concat(users[0].name, ", age: ").concat(users[0].age, ", occupation: ").concat(users[0].occupation));
 }
