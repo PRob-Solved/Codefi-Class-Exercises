@@ -1,10 +1,10 @@
 // Basic ////////////////////////
-const string = "string"; // variable that holds a string value
-const number = 7; // variable that holds a number
-const boolean = 7 > 1;
-const nul = null;
-let notdefined;
-const something = {
+var string = "string"; // variable that holds a string value
+var number = 7; // variable that holds a number
+var boolean = 7 > 1;
+var nul = null;
+var notdefined;
+var something = {
     name: "Paul", eats: "okra"
-    };
-const somethingElse = [7, 34, 35];
+};
+var somethingElse = [7, 34, 35];
