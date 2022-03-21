@@ -1,5 +1,5 @@
-const numberInput = document.getElementById("numberInput").value;
-const arrayLength = document.getElementById("arrayLength").value;
+const numberInput = document.getElementById("numberInput");
+const arrayLength = document.getElementById("arrayLength");
 // const publishedArray = document.getElementById("publishedArray");
 let numberArray = [];
 

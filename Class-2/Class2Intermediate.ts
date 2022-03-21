@@ -10,10 +10,13 @@
         
     
     let foodItems = ''
-      
-    for (food of foodObjects) {
-        foodItems += '<li>' + food.name + ', ' + food.price + '</li>'
-      }
+    
+    for (let i=0; i<foodObjects.length; i++) {
+        foodItems += '<li>' + foodObjects[i].name + ', ' + foodObjects[i].price + '</li>'
+    }
+    // for (food of foodObjects) {
+    //     foodItems += '<li>' + food.name + ', ' + food.price + '</li>'
+    //   }
       
     foodList.innerHTML = foodItems
     

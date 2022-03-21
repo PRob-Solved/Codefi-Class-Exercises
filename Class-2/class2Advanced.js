@@ -1,5 +1,5 @@
-var numberInput = document.getElementById("numberInput").value;
-var arrayLength = document.getElementById("arrayLength").value;
+var numberInput = document.getElementById("numberInput");
+var arrayLength = document.getElementById("arrayLength");
 // const publishedArray = document.getElementById("publishedArray");
 var numberArray = [];
 function arrayOfMultiples(numberInput, arrayLength) {

@@ -6,9 +6,11 @@
         { name: "Taco Salad", price: 7.95 }
     ];
     var foodItems = '';
-    for (var _i = 0, foodObjects_1 = foodObjects; _i < foodObjects_1.length; _i++) {
-        food = foodObjects_1[_i];
-        foodItems += '<li>' + food.name + ', ' + food.price + '</li>';
+    for (var i = 0; i < foodObjects.length; i++) {
+        foodItems += '<li>' + foodObjects[i].name + ', ' + foodObjects[i].price + '</li>';
     }
+    // for (food of foodObjects) {
+    //     foodItems += '<li>' + food.name + ', ' + food.price + '</li>'
+    //   }
     foodList.innerHTML = foodItems;
 })();
