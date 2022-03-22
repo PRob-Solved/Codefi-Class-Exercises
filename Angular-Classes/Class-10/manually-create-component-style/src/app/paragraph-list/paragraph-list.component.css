@@ -1,7 +1,8 @@
-p .changeBg {
-  background-color: #c9cba3;
+.changeBg {
+  background-color: #575842;
+  color: #fff;
 }
 
-p .changeFont {
-  font-weight: bolder;
+.changeFont {
+  font-weight: bold;
 }
